@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Battle Cities — build, defend, conquer." />
+    <meta name="theme-color" content="#111827" />
+    <title>Battle Cities — Build. Defend. Conquer.</title>
+    <link rel="preload" href="assets/main-screen-background.png" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <nav class="nav shell" aria-label="Main navigation">
+          <a class="brand" href="#top" aria-label="Battle Cities home">
+            <span class="brand-mark" aria-hidden="true">BC</span>
+            <span>BATTLE CITIES</span>
+          </a>
+          <div class="nav-links">
+            <a href="#mission">Mission</a>
+            <a href="#arsenal">Arsenal</a>
+            <a href="#play" class="nav-cta">Play now</a>
+          </div>
+        </nav>
+
+        <div class="hero-grid shell" id="top">
+          <div class="hero-copy">
+            <p class="eyebrow"><span></span> THE ARCADE NEVER RETREATS</p>
+            <h1 id="hero-title">BUILD.<br />DEFEND.<br /><em>CONQUER.</em></h1>
+            <p class="hero-text">A new front for the legendary tank battle. Break through brick walls, outmaneuver enemy armor, and keep your base standing.</p>
+            <div class="hero-actions" id="play">
+              <a class="button button-primary" href="https://battlecities.com" target="_blank" rel="noreferrer">Launch the game <b aria-hidden="true">↗</b></a>
+              <a class="button button-ghost" href="#mission">View mission <b aria-hidden="true">↓</b></a>
+            </div>
+            <div class="hero-meta" aria-label="Game features">
+              <div><strong>35</strong><span>Battle maps</span></div>
+              <div><strong>1–2</strong><span>Players</span></div>
+              <div><strong>∞</strong><span>Ways to win</span></div>
+            </div>
+          </div>
+
+          <div class="battle-window" aria-label="Battle Cities gameplay scene">
+            <div class="window-bar"><span>LIVE BATTLEFIELD</span><i></i><i></i><i></i></div>
+            <img src="assets/main-menu-battlefield.png" alt="Battle Cities battlefield" />
+            <div class="targeting" aria-hidden="true"></div>
+            <div class="battle-caption"><span>SECTOR 01</span><strong>BASE DEFENSE ACTIVE</strong></div>
+          </div>
+        </div>
+        <p class="scroll-cue">SCROLL TO DEPLOY <span>↓</span></p>
+      </section>
+
+      <section class="mission section shell" id="mission" aria-labelledby="mission-title">
+        <div class="section-label">01 / THE MISSION</div>
+        <div class="mission-layout">
+          <h2 id="mission-title">ONE BASE.<br />NO <em>SECOND</em><br />CHANCES.</h2>
+          <div class="mission-copy">
+            <p>Battle Cities is pure tactical pressure. Every shell counts; every wall becomes cover or a doorway to danger.</p>
+            <p>Clear the field, protect the eagle, and turn a simple tank into an unstoppable force.</p>
+            <a href="https://battlecities.com" target="_blank" rel="noreferrer" class="text-link">Enter the battlefield <span>→</span></a>
+          </div>
+        </div>
+        <div class="feature-strip">
+          <article><span class="feature-number">01</span><h3>TACTICAL<br />TERRAIN</h3><p>Break brick, hold steel, and use every route to your advantage.</p></article>
+          <article><span class="feature-number">02</span><h3>CLASSIC<br />CHAOS</h3><p>Fast rounds, incoming armor, and a base worth defending.</p></article>
+          <article><span class="feature-number">03</span><h3>CO-OP<br />COMBAT</h3><p>Bring a wingman. Two tanks are better than one.</p></article>
+        </div>
+      </section>
+
+      <section class="arsenal" id="arsenal" aria-labelledby="arsenal-title">
+        <div class="shell arsenal-layout">
+          <div class="arsenal-art">
+            <div class="scanner-line"></div>
+            <img src="assets/player-tank.png" alt="Upgraded player tank" />
+            <span class="coordinate c1">X: 41.21</span><span class="coordinate c2">Y: 08.45</span>
+          </div>
+          <div class="arsenal-copy">
+            <p class="eyebrow"><span></span> PLAYER ONE / LOADOUT</p>
+            <h2 id="arsenal-title">TANK<br /><em>READY.</em></h2>
+            <p>Pick up power-ups, increase your firepower, and make the battlefield yours.</p>
+            <ul>
+              <li><b>01</b> Upgradable cannon fire</li>
+              <li><b>02</b> Gamepad and keyboard ready</li>
+              <li><b>03</b> Classic maps and custom battles</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta shell">
+        <p class="eyebrow"><span></span> READY WHEN YOU ARE</p>
+        <h2>ROLL OUT.<br /><em>HOLD THE LINE.</em></h2>
+        <a class="button button-primary" href="https://battlecities.com" target="_blank" rel="noreferrer">Play Battle Cities <b aria-hidden="true">↗</b></a>
+      </section>
+    </main>
+    <footer class="footer shell">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">BC</span><span>BATTLE CITIES</span></a>
+      <p>Classic tank combat, rebuilt for the web.</p>
+      <p>© <span id="year"></span> Battle Cities</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
