@@ -5,6 +5,28 @@ const presenceLabel = document.querySelector('[data-presence-label]');
 const onlineCount = document.querySelector('#online-count');
 const inGameCount = document.querySelector('#in-game-count');
 const presenceRetry = document.querySelector('[data-presence-retry]');
+const presenceClientId = getPresenceClientId();
+
+function getPresenceClientId() {
+  const storageKey = 'battlecities.presence.client';
+  try {
+    const existing = sessionStorage.getItem(storageKey);
+    if (existing && /^[a-z0-9-]{6,80}$/i.test(existing)) {
+      return existing;
+    }
+    const bytes = new Uint8Array(12);
+    crypto.getRandomValues(bytes);
+    const generated = `site-${Array.from(bytes, (value) =>
+      value.toString(16).padStart(2, '0'),
+    ).join('')}`;
+    sessionStorage.setItem(storageKey, generated);
+    return generated;
+  } catch {
+    return `site-${Date.now().toString(36)}-${Math.random()
+      .toString(36)
+      .slice(2, 10)}`;
+  }
+}
 
 async function updatePresence() {
   presenceElement.setAttribute('aria-busy', 'true');
@@ -13,7 +35,11 @@ async function updatePresence() {
 
   try {
     const response = await fetch('https://api.battlecities.com/api/presence', {
+      method: 'POST',
+      credentials: 'include',
       cache: 'no-store',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ clientId: presenceClientId, inGame: false }),
     });
 
     if (!response.ok) {
@@ -21,8 +47,12 @@ async function updatePresence() {
     }
 
     const presence = await response.json();
-    onlineCount.textContent = Number.isFinite(presence.online) ? presence.online : '—';
-    inGameCount.textContent = Number.isFinite(presence.inGame) ? presence.inGame : '—';
+    onlineCount.textContent = Number.isFinite(presence.online)
+      ? presence.online
+      : '—';
+    inGameCount.textContent = Number.isFinite(presence.inGame)
+      ? presence.inGame
+      : '—';
     presenceLabel.textContent = 'BATTLE CITIES LIVE';
   } catch {
     onlineCount.textContent = '—';
@@ -37,3 +67,14 @@ async function updatePresence() {
 presenceRetry.addEventListener('click', updatePresence);
 updatePresence();
 setInterval(updatePresence, 30000);
+
+window.addEventListener('pagehide', () => {
+  void fetch(
+    `https://api.battlecities.com/api/presence?clientId=${encodeURIComponent(presenceClientId)}`,
+    {
+      method: 'DELETE',
+      credentials: 'include',
+      keepalive: true,
+    },
+  );
+});
