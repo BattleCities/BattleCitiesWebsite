@@ -20,7 +20,13 @@
     <main class="construction">
       <header class="topbar shell">
         <a href="https://play.battlecities.com" class="topbar-link">↖ ENTER BATTLEFIELD</a>
-        <span class="status"><i></i> LIVE GAME ONLINE</span>
+        <div class="presence" data-presence aria-live="polite" aria-busy="true">
+          <i aria-hidden="true"></i>
+          <span data-presence-label>CONNECTING TO BATTLEFIELD</span>
+          <strong><span id="online-count">—</span> ONLINE</strong>
+          <strong><span id="in-game-count">—</span> PLAYING</strong>
+          <button class="presence-retry" type="button" data-presence-retry hidden>RETRY</button>
+        </div>
       </header>
 
       <section class="shell bunker" aria-labelledby="headline">
