@@ -1,5 +1,38 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+/*
+DEPLOYMENT SEQUENCE
+[  0ms] Tactical shutters close over the site.
+[180ms] Deployment clearance appears.
+[900ms] Player enters the live battlefield.
+*/
+const DEPLOYMENT_TIMING = {
+  redirectDelay: 900,
+};
+
+const playButton = document.querySelector('.play-button');
+const deploymentOverlay = document.querySelector('[data-deployment-overlay]');
+
+playButton?.addEventListener('click', (event) => {
+  if (
+    !deploymentOverlay ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) {
+    return;
+  }
+
+  event.preventDefault();
+  if (document.body.classList.contains('is-deploying')) {
+    return;
+  }
+
+  document.body.classList.add('is-deploying');
+  deploymentOverlay.classList.add('is-active');
+  window.setTimeout(() => {
+    window.location.assign(playButton.href);
+  }, DEPLOYMENT_TIMING.redirectDelay);
+});
+
 const presenceElement = document.querySelector('[data-presence]');
 const presenceLabel = document.querySelector('[data-presence-label]');
 const onlineCount = document.querySelector('#online-count');
