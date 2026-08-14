@@ -57,13 +57,15 @@
         </div>
       </section>
     </main>
-    <div class="deployment-overlay" data-deployment-overlay aria-hidden="true">
-      <div class="deployment-shutter deployment-shutter-top"></div>
-      <div class="deployment-shutter deployment-shutter-bottom"></div>
-      <div class="deployment-message">
-        <span>ACCESS CLEARED</span>
-        <strong>DEPLOYING TO<br />THE BATTLEFIELD</strong>
-        <i aria-hidden="true"></i>
+    <div class="deployment-overlay descending" data-deployment-overlay role="status" aria-live="assertive" aria-hidden="true">
+      <div class="deployment-door deployment-door-left"><i aria-hidden="true"></i></div>
+      <div class="deployment-door deployment-door-right"><i aria-hidden="true"></i></div>
+      <div class="deployment-readout">
+        <small>ELEVATOR // DEPLOYMENT SEQUENCE</small>
+        <b>ENTERING BATTLEFIELD</b>
+        <strong>SECTOR 07</strong>
+        <i aria-hidden="true"><em></em></i>
+        <span>SYSTEMS ONLINE // ARMOR READY</span>
       </div>
     </div>
     <footer>© <span id="year"></span> BATTLE CITIES · ALL SYSTEMS NOMINAL</footer>
