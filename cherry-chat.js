@@ -120,20 +120,18 @@ async function mintEmbedToken(walletAddress) {
 }
 
 async function initializeChat() {
-  const mountPoint = document.querySelector('#cherry-chat');
   const CherryEmbed = window.CherryEmbedSDK?.CherryEmbed;
-  if (mountPoint === null || typeof CherryEmbed !== 'function') {
+  if (typeof CherryEmbed !== 'function') {
     throw new Error('Cherry chat SDK did not load.');
   }
 
   chat = new CherryEmbed({
     appId: CHERRY_APP_ID,
     embedUrl: CHERRY_EMBED_URL,
-    container: mountPoint,
     roomId: CHERRY_ROOM_ID,
     mode: 'single',
     position: 'floating-right',
-    collapsed: false,
+    collapsed: true,
     theme: { mode: 'dark', primaryColor: '#FFB30F' },
     signChallengeHandler: async (message) => {
       const { provider } = await connectWallet();
