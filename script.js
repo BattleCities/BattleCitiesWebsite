@@ -154,6 +154,11 @@ async function updatePresence() {
     }
 
     const presence = await response.json();
+    const liveUsersEnabled = presence.liveUsersEnabled === true;
+    presenceElement.hidden = !liveUsersEnabled;
+    if (!liveUsersEnabled) {
+      return;
+    }
     onlineCount.textContent = Number.isFinite(presence.online)
       ? presence.online
       : '—';
